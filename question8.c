@@ -1,48 +1,32 @@
-//  WAP to reverse a string and check that the string is palindrome or not
-// Write a program of structure employee that provides the following
-// a. information -print and display empno, empname, address
-// andage
-// b. Write a program of structure for five employee that
-// provides the following information -print and display
-// empno, empname, address andage
-
+// Write a program in C to count the total number of vowels or consonants in a
+// string.
 
 #include <stdio.h>
-
-struct Employee {
-    int empno;
-    char empname[50];
-    char address[100];
-    int age;
-};
-
-// Function prototype
-void displayEmployee(struct Employee emp);
+#include <ctype.h>
 
 int main() {
-    struct Employee emp;
+    char str[100];
+    int vowels = 0, consonants = 0, i;
 
-    // Input employee details
-    printf("Enter employee number: ");
-    scanf("%d", &emp.empno);
-    printf("Enter employee name: ");
-    scanf("%s", emp.empname);
-    printf("Enter employee address: ");
-    scanf("%s", emp.address);
-    printf("Enter employee age: ");
-    scanf("%d", &emp.age);
+    // Input string
+    printf("Enter a string: ");
+    scanf("%[^\n]", str);
 
-    // Display employee information
-    printf("\nEmployee Information:\n");
-    displayEmployee(emp);
+    // Count vowels and consonants
+    for (i = 0; str[i] != '\0'; i++) {
+        char ch = tolower(str[i]);
+        if (ch >= 'a' && ch <= 'z') {
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                vowels++;
+            } else {
+                consonants++;
+            }
+        }
+    }
+
+    // Display result
+    printf("Total number of vowels: %d\n", vowels);
+    printf("Total number of consonants: %d\n", consonants);
 
     return 0;
-}
-
-// Function to display employee information
-void displayEmployee(struct Employee emp) {
-    printf("Employee Number: %d\n", emp.empno);
-    printf("Employee Name: %s\n", emp.empname);
-    printf("Employee Address: %s\n", emp.address);
-    printf("Employee Age: %d\n", emp.age);
 }

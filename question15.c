@@ -1,45 +1,59 @@
-// Store 5 numbers in array and sort it in ascending order
+// Write a program in C to find the largest and smallest words in a string.
 
+#include <stdio.h>
+#include <string.h>
 
-    #include <stdio.h>
+#define MAX_WORDS 100
+#define MAX_LENGTH 100
 
-#define NUMBERS_COUNT 5
+void findLargestAndSmallestWords(char *str) {
+    char words[MAX_WORDS][MAX_LENGTH];
+    int i, j, k, wordCount = 0;
+    int minLen = MAX_LENGTH, maxLen = 0;
+    char smallest[MAX_LENGTH], largest[MAX_LENGTH];
 
-void bubbleSort(int arr[], int n);
-
-int main() {
-    int numbers[NUMBERS_COUNT];
-
-    // Input numbers
-    printf("Enter %d numbers:\n", NUMBERS_COUNT);
-    for (int i = 0; i < NUMBERS_COUNT; i++) {
-        printf("Enter number %d: ", i + 1);
-        scanf("%d", &numbers[i]);
-    }
-
-    // Sort numbers
-    bubbleSort(numbers, NUMBERS_COUNT);
-
-    // Display sorted numbers
-    printf("\nNumbers in ascending order:\n");
-    for (int i = 0; i < NUMBERS_COUNT; i++) {
-        printf("%d ", numbers[i]);
-    }
-    printf("\n");
-
-    return 0;
-}
-
-// Function to perform bubble sort
-void bubbleSort(int arr[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                // Swap arr[j] and arr[j+1]
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
+    // Tokenizing the string into words
+    for (i = 0; str[i] != '\0'; ++i) {
+        if (str[i] == ' ') {
+            words[wordCount][j] = '\0';
+            wordCount++;
+            j = 0;
+        } else {
+            words[wordCount][j++] = str[i];
         }
     }
+    words[wordCount][j] = '\0';
+    wordCount++;
+
+    // Finding the smallest and largest words
+    for (k = 0; k < wordCount; ++k) {
+        int len = strlen(words[k]);
+        if (len < minLen) {
+            minLen = len;
+            strcpy(smallest, words[k]);
+        }
+        if (len > maxLen) {
+            maxLen = len;
+            strcpy(largest, words[k]);
+        }
+    }
+
+    printf("Smallest word: %s\n", smallest);
+    printf("Largest word: %s\n", largest);
+}
+
+int main() {
+    char str[MAX_LENGTH];
+
+    // Input string from user
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    // Remove the newline character if present
+    if (str[strlen(str) - 1] == '\n')
+        str[strlen(str) - 1] = '\0';
+
+    findLargestAndSmallestWords(str);
+
+    return 0;
 }

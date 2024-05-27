@@ -1,27 +1,29 @@
-//  WAP to accept 5 students name and store it in array
-
-
+// .Write a program in C to find the number of times a given word 'is' appears in
+// the given string
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_LENGTH 50
-#define NUM_STUDENTS 5
+#define MAX_LENGTH 1000
 
 int main() {
-    char studentNames[NUM_STUDENTS][MAX_LENGTH];
+    char sentence[MAX_LENGTH];
+    char word[] = "is";
+    int count = 0;
 
-    // Input student names
-    printf("Enter names of %d students:\n", NUM_STUDENTS);
-    for (int i = 0; i < NUM_STUDENTS; i++) {
-        printf("Enter name of student %d: ", i + 1);
-        scanf("%s", studentNames[i]);
+    // Input the sentence
+    printf("Enter a sentence: ");
+    fgets(sentence, sizeof(sentence), stdin);
+
+    // Find occurrences of the word 'is' in the sentence
+    char *ptr = strstr(sentence, word);
+    while (ptr != NULL) {
+        count++;
+        ptr = strstr(ptr + 1, word);
     }
 
-    // Display student names
-    printf("\nStudent names entered:\n");
-    for (int i = 0; i < NUM_STUDENTS; i++) {
-        printf("Student %d: %s\n", i + 1, studentNames[i]);
-    }
+    // Display the result
+    printf("The word 'is' appears %d times in the sentence.\n", count);
 
     return 0;
 }
+

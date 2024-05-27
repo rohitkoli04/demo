@@ -1,30 +1,28 @@
-// WAP to accept 5 numbers from user and check entered number is even or odd
-// using of array
-
+// Write a program in C to remove characters from a string except alphabets.
 
 #include <stdio.h>
+#include <ctype.h>
 
-#define NUMBERS_COUNT 5
+#define MAX_LENGTH 1000
 
 int main() {
-    int numbers[NUMBERS_COUNT];
+    char str[MAX_LENGTH], result[MAX_LENGTH];
+    int i, j = 0;
 
-    // Input numbers
-    printf("Enter %d numbers:\n", NUMBERS_COUNT);
-    for (int i = 0; i < NUMBERS_COUNT; i++) {
-        printf("Enter number %d: ", i + 1);
-        scanf("%d", &numbers[i]);
-    }
+    // Input string
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
 
-    // Check even or odd and display result
-    printf("\nResult:\n");
-    for (int i = 0; i < NUMBERS_COUNT; i++) {
-        if (numbers[i] % 2 == 0) {
-            printf("%d is even.\n", numbers[i]);
-        } else {
-            printf("%d is odd.\n", numbers[i]);
+    // Remove non-alphabetic characters
+    for (i = 0; str[i] != '\0'; i++) {
+        if (isalpha(str[i])) {
+            result[j++] = str[i];
         }
     }
+    result[j] = '\0'; // Append null terminator to the result string
+
+    // Display the result
+    printf("Result string: %s\n", result);
 
     return 0;
 }

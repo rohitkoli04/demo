@@ -1,43 +1,39 @@
-// . WAP to perform Palindrome number using for loop and funcntio
+// Write a program in C to extract a substring from a given string
 
 #include <stdio.h>
-#include <stdbool.h>
 
-// Function prototype
-bool isPalindrome(int num);
+void extractSubstring(char source[], int start, int length, char destination[]);
 
 int main() {
-    int number;
+    char source[100], destination[100];
+    int start, length;
 
-    // Input number
-    printf("Enter a number: ");
-    scanf("%d", &number);
+    // Input the string
+    printf("Enter a string: ");
+    scanf("%[^\n]", source);
 
-    // Check if the number is a palindrome
-    if (isPalindrome(number)) {
-        printf("%d is a palindrome number.\n", number);
-    } else {
-        printf("%d is not a palindrome number.\n", number);
-    }
+    // Input the start index and length of substring
+    printf("Enter start index: ");
+    scanf("%d", &start);
+    printf("Enter length of substring: ");
+    scanf("%d", &length);
+
+    // Extract substring
+    extractSubstring(source, start, length, destination);
+
+    // Display the extracted substring
+    printf("Substring: %s\n", destination);
 
     return 0;
 }
 
-// Function to check if a number is a palindrome
-bool isPalindrome(int num) {
-    int originalNum = num;
-    int reverseNum = 0;
+// Function to extract a substring from a given string
+void extractSubstring(char source[], int start, int length, char destination[]) {
+    int i, j;
 
-    // Reverse the number
-    for (; num != 0; num /= 10) {
-        int digit = num % 10;
-        reverseNum = reverseNum * 10 + digit;
+    // Copy characters from source string to destination string
+    for (i = start, j = 0; i < start + length && source[i] != '\0'; i++, j++) {
+        destination[j] = source[i];
     }
-
-    // Check if the original number is equal to its reverse
-    if (originalNum == reverseNum) {
-        return true;
-    } else {
-        return false;
-    }
+    destination[j] = '\0'; // Append null terminator to the destination string
 }

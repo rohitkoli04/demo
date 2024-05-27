@@ -1,21 +1,38 @@
-// WAP to find factorial using recursion
+// Write a program in C to count the total number of words in a string.
 
 #include <stdio.h>
+#include <stdbool.h>
 
-int factorial(int n);
+bool isWhiteSpace(char c);
 
 int main() {
-    int number;
-    printf("Enter a number to find its factorial: ");
-    scanf("%d", &number);
-    printf("Factorial of %d is %d\n", number, factorial(number));
+    char str[1000];
+    int wordCount = 0;
+
+    // Input string
+    printf("Enter a string: ");
+    scanf("%[^\n]", str); // Reading string with spaces
+
+    // Count words in the string
+    bool inWord = false;
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (!isWhiteSpace(str[i])) {
+            if (!inWord) {
+                inWord = true;
+                wordCount++;
+            }
+        } else {
+            inWord = false;
+        }
+    }
+
+    // Display the total number of words
+    printf("Total number of words in the string: %d\n", wordCount);
+
     return 0;
 }
 
-int factorial(int n) {
-    if (n == 0 || n == 1) {
-        return 1;
-    } else {
-        return n * factorial(n - 1);
-    }
+// Function to check if a character is white space
+bool isWhiteSpace(char c) {
+    return c == ' ' || c == '\t' || c == '\n' || c == '\r';
 }

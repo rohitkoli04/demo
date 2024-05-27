@@ -1,25 +1,24 @@
-//  WAP Find out length of string without using inbuilt function
+// Write a program in C to copy one string to another string.
 
 #include <stdio.h>
 
-int stringLength(char *str);
-
 int main() {
-    char str[100];
-    printf("Enter a string: ");
-    scanf("%[^\n]", str); // Reading string with spaces
+    char source[100], destination[100];
+    int i;
 
-    int length = stringLength(str);
-    printf("Length of the string: %d\n", length);
+    // Input the source string
+    printf("Enter the source string: ");
+    scanf("%s", source);
+
+    // Copy the source string to destination string
+    for (i = 0; source[i] != '\0'; i++) {
+        destination[i] = source[i];
+    }
+    destination[i] = '\0'; // Append null terminator to the destination string
+
+    // Print the copied string
+    printf("Source string: %s\n", source);
+    printf("Copied string: %s\n", destination);
 
     return 0;
-}
-
-int stringLength(char *str) {
-    int length = 0;
-    // Iterate through each character until null terminator is encountered
-    while (str[length] != '\0') {
-        length++;
-    }
-    return length;
 }

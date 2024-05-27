@@ -1,67 +1,33 @@
-// WAP to take two Array input from user and sort them in ascending or
-// descending order as per user’s choice
-
+// Write a program in C to compare two strings without using string library
+// functions.
 #include <stdio.h>
 
-void bubbleSort(int arr[], int n, char order);
-void swap(int *a, int *b);
-void printArray(int arr[], int n);
-
 int main() {
-    int size1, size2;
-    char order;
-    
-    printf("Enter the size of the first array: ");
-    scanf("%d", &size1);
-    int arr1[size1];
-    printf("Enter elements of the first array: ");
-    for (int i = 0; i < size1; i++) {
-        scanf("%d", &arr1[i]);
-    }
-    
-    printf("Enter the size of the second array: ");
-    scanf("%d", &size2);
-    int arr2[size2];
-    printf("Enter elements of the second array: ");
-    for (int i = 0; i < size2; i++) {
-        scanf("%d", &arr2[i]);
-    }
-    
-    printf("Enter 'a' for ascending order or 'd' for descending order: ");
-    scanf(" %c", &order);
-    
-    printf("Sorting the first array...\n");
-    bubbleSort(arr1, size1, order);
-    printf("Sorted first array: ");
-    printArray(arr1, size1);
-    
-    printf("Sorting the second array...\n");
-    bubbleSort(arr2, size2, order);
-    printf("Sorted second array: ");
-    printArray(arr2, size2);
-    
-    return 0;
-}
+    char str1[100], str2[100];
+    int i, flag = 0;
 
-void bubbleSort(int arr[], int n, char order) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if ((order == 'a' && arr[j] > arr[j+1]) || (order == 'd' && arr[j] < arr[j+1])) {
-                swap(&arr[j], &arr[j+1]);
-            }
+    // Input first string
+    printf("Enter first string: ");
+    scanf("%s", str1);
+
+    // Input second string
+    printf("Enter second string: ");
+    scanf("%s", str2);
+
+    // Compare strings character by character
+    for (i = 0; str1[i] != '\0' && str2[i] != '\0'; i++) {
+        if (str1[i] != str2[i]) {
+            flag = 1;
+            break;
         }
     }
-}
 
-void swap(int *a, int *b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
-void printArray(int arr[], int n) {
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
+    // Check if strings are equal or not
+    if (flag == 0 && str1[i] == '\0' && str2[i] == '\0') {
+        printf("Strings are equal.\n");
+    } else {
+        printf("Strings are not equal.\n");
     }
-    printf("\n");
+
+    return 0;
 }

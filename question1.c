@@ -1,28 +1,23 @@
-//  Write a program to find out the max number from given array using function#include <stdio.h>
+// Write a program in C to find the length of a string without using library
+// functions.
 
-// Function to find the maximum 
-int findMax(int arr[], int n) {
-    int max = arr[0]; // Assume the first element 
-
-    // Traverse through the array to find the maximum
-    for (int i = 1; i < n; i++) {
-        if (arr[i] > max) {
-            max = arr[i];
-        }
-    }
-
-    return max;
-}
+#include <stdio.h>
 
 int main() {
-    int arr[] = {5, 8, 3, 12, 9}; // Example array
-    int size = sizeof(arr) / sizeof(arr[0]); // Calculate the size of the array
+    char str[100];
+    int length = 0;
 
-    // Call the function to find the maximum number
-    int maxNumber = findMax(arr, size);
+    // Input string
+    printf("Enter a string: ");
+    scanf("%[^\n]", str); // Reading string with spaces
 
-    // Print the maximum number
-    printf("The maximum number in the array is: %d\n", maxNumber);
+    // Calculate length of the string
+    while (str[length] != '\0') {
+        length++;
+    }
+
+    // Display length of the string
+    printf("Length of the string: %d\n", length);
 
     return 0;
 }

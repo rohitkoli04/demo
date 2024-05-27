@@ -1,25 +1,29 @@
-// WAP to accept 5 numbers from user and display in reverse order using for
-// loop and array
-
+// Write a program in C to read a sentence and replace lowercase characters with
+// uppercase and vice versa.
 
 #include <stdio.h>
+#include <ctype.h>
+
+#define MAX_LENGTH 1000
 
 int main() {
-    int numbers[5];
+    char sentence[MAX_LENGTH];
 
-    // Input numbers
-    printf("Enter 5 numbers:\n");
-    for (int i = 0; i < 5; i++) {
-        printf("Enter number %d: ", i + 1);
-        scanf("%d", &numbers[i]);
+    // Input the sentence
+    printf("Enter a sentence: ");
+    fgets(sentence, sizeof(sentence), stdin);
+
+    // Convert characters
+    for (int i = 0; sentence[i] != '\0'; i++) {
+        if (islower(sentence[i])) {
+            sentence[i] = toupper(sentence[i]);
+        } else if (isupper(sentence[i])) {
+            sentence[i] = tolower(sentence[i]);
+        }
     }
 
-    // Display numbers in reverse order
-    printf("\nNumbers in reverse order:\n");
-    for (int i = 4; i >= 0; i--) {
-        printf("%d ", numbers[i]);
-    }
-    printf("\n");
+    // Display the modified sentence
+    printf("Modified sentence: %s\n", sentence);
 
     return 0;
 }
