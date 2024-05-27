@@ -1,17 +1,27 @@
-// WAP to find maximum number among 3 numbers using ternary operator
+//  WAP to accept 5 students name and store it in array
 
-#include<stdio.h>i
-int main(){
-    int num1,num2,num3, so;
 
-    printf("enter the number :");
-    scanf("%d %d %d", &num1,&num2, &num3);
+#include <stdio.h>
+#include <string.h>
 
-    // using ternary 
+#define MAX_LENGTH 50
+#define NUM_STUDENTS 5
 
-    so = (num1 > num2) ? ((num1 > num3) ? num1 : num3) : ((num2 > num3) ? num2 : num3);
+int main() {
+    char studentNames[NUM_STUDENTS][MAX_LENGTH];
 
-    printf(" the maximun number amoung %d, %d, and %d is %d.\n", num1, num2, num3,so);
+    // Input student names
+    printf("Enter names of %d students:\n", NUM_STUDENTS);
+    for (int i = 0; i < NUM_STUDENTS; i++) {
+        printf("Enter name of student %d: ", i + 1);
+        scanf("%s", studentNames[i]);
+    }
+
+    // Display student names
+    printf("\nStudent names entered:\n");
+    for (int i = 0; i < NUM_STUDENTS; i++) {
+        printf("Student %d: %s\n", i + 1, studentNames[i]);
+    }
+
     return 0;
-
 }

@@ -1,27 +1,28 @@
-//  Write  C program to calculate profit and loss on a transaction.
+// Accept 5 numbers from user and perform sum of array
+
 
 #include <stdio.h>
 
+#define NUMBERS_COUNT 5
+
 int main() {
-    float cost_price, selling_price, profit, loss;
+    int numbers[NUMBERS_COUNT];
+    int sum = 0;
 
-    // Input cost price and selling price
-    printf("Enter the cost price: ");
-    scanf("%f", &cost_price);
-    printf("Enter the selling price: ");
-    scanf("%f", &selling_price);
-
-    // Calculate profit or loss
-    if (selling_price > cost_price) {
-        profit = selling_price - cost_price;
-        printf("Profit: $%.2f\n", profit);
-    } else if (selling_price < cost_price) {
-        loss = cost_price - selling_price;
-        printf("Loss: $%.2f\n", loss);
-    } else {
-        printf("No profit, no loss.\n");
+    // Input numbers
+    printf("Enter %d numbers:\n", NUMBERS_COUNT);
+    for (int i = 0; i < NUMBERS_COUNT; i++) {
+        printf("Enter number %d: ", i + 1);
+        scanf("%d", &numbers[i]);
     }
+
+    // Calculate sum of numbers
+    for (int i = 0; i < NUMBERS_COUNT; i++) {
+        sum += numbers[i];
+    }
+
+    // Display sum
+    printf("\nSum of numbers: %d\n", sum);
 
     return 0;
 }
-

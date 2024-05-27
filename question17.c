@@ -1,49 +1,29 @@
-//  Write a program in C to calculate and print the electricity bill of a given
-// customer. The customer ID, name, and unit consumed by the user should
-// be captured from the keyboard to display the total amount to be paid to the
-// customer. The charge are as follow :
-// 20. Unit 21. Charge/unit
-// 22. upto 350 23. @1.20
-// 24. 350 and above but less than 600 25. @1.50
-// 26. 600 and above but less than 800 27. @1.80
-// 28. 800 and above 29. @2.0
+// .WAP to show difference between Structure and Union
 
 #include <stdio.h>
 
+// Define a structure
+struct ExampleStruct {
+    int x;
+    char y;
+};
+
+// Define a union
+union ExampleUnion {
+    int x;
+    char y;
+};
+
 int main() {
-    int customer_id, units;
-    char customer_name[50];
-    float charge_per_unit, total_amount;
+    struct ExampleStruct myStruct;
+    union ExampleUnion myUnion;
 
-    // Input customer details
-    printf("Enter customer ID: ");
-    scanf("%d", &customer_id);
-    printf("Enter customer name: ");
-    scanf("%s", customer_name);
-    printf("Enter units consumed: ");
-    scanf("%d", &units);
+    // Size of structure
+    printf("Size of Structure: %lu bytes\n", sizeof(myStruct));
 
-    // Calculate charge per unit based on units consumed
-    if (units <= 350) {
-        charge_per_unit = 1.20;
-    } else if (units < 600) {
-        charge_per_unit = 1.50;
-    } else if (units < 800) {
-        charge_per_unit = 1.80;
-    } else {
-        charge_per_unit = 2.0;
-    }
-
-    // Calculate total amount
-    total_amount = units * charge_per_unit;
-
-    // Display bill
-    printf("\nElectricity Bill\n");
-    printf("Customer ID: %d\n", customer_id);
-    printf("Customer Name: %s\n", customer_name);
-    printf("Units Consumed: %d\n", units);
-    printf("Charge per Unit: $%.2f\n", charge_per_unit);
-    printf("Total Amount to be Paid: $%.2f\n", total_amount);
+    // Size of union
+    printf("Size of Union: %lu bytes\n", sizeof(myUnion));
 
     return 0;
 }
+``

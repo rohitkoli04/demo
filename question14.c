@@ -1,15 +1,29 @@
-// WAP tfind the largest of three numbers
+//  Perform 2D matrix array
 
-#include<stdio.h>
-int main(){
-    int num1,num2,num3,largest;
-    printf("enter three number :");
-    scanf("%d %d %d", &num1,&num2,&num3);
-    
-    //lrgest using ternary
 
-largest = (num1 > num2) ? ((num1 > num3) ? num1 : num3) : ((num2 > num3) ? num2 : num3);
+#include <stdio.h>
 
-printf("the largest number amoung %d,5d,%d is %d.\n", num1,num2,num3);
-return 0;
+#define NUMBERS_COUNT 5
+
+int main() {
+    int numbers[NUMBERS_COUNT];
+
+    // Input numbers
+    printf("Enter %d numbers:\n", NUMBERS_COUNT);
+    for (int i = 0; i < NUMBERS_COUNT; i++) {
+        printf("Enter number %d: ", i + 1);
+        scanf("%d", &numbers[i]);
+    }
+
+    // Check even or odd and display result
+    printf("\nResult:\n");
+    for (int i = 0; i < NUMBERS_COUNT; i++) {
+        if (numbers[i] % 2 == 0) {
+            printf("%d is even.\n", numbers[i]);
+        } else {
+            printf("%d is odd.\n", numbers[i]);
+        }
+    }
+
+    return 0;
 }

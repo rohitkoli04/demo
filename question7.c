@@ -1,17 +1,25 @@
-// Accept marks from user and check pass or fail
+//  WAP Find out length of string without using inbuilt function
 
 #include <stdio.h>
-int main(){
-    int marks;
-    printf("enter your marks :");
-    scanf("%d", marks);
-    //cheak marks using if 
-  if(marks >= 40) {
-        printf("Congratulations! You have passed.\n");
-    } 
-    else (marks <=40); {
-        printf("Sorry, you have failed.\n");
-    }
-return 0;
- }
 
+int stringLength(char *str);
+
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%[^\n]", str); // Reading string with spaces
+
+    int length = stringLength(str);
+    printf("Length of the string: %d\n", length);
+
+    return 0;
+}
+
+int stringLength(char *str) {
+    int length = 0;
+    // Iterate through each character until null terminator is encountered
+    while (str[length] != '\0') {
+        length++;
+    }
+    return length;
+}
